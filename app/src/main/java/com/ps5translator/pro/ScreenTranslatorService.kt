@@ -538,4 +538,72 @@ class ScreenTranslatorService : Service() {
         val sig = IntArray(cols * rows)
         var idx = 0
         for (r in 0 until rows) {
-            val y = ((r + 0
+            val y = ((r + 0.5f) * bmp.height / rows).toInt().coerceIn(0, bmp.height - 1)
+            for (c in 0 until cols) {
+                val x = ((c + 0.5f) * bmp.width / cols).toInt().coerceIn(0, bmp.width - 1)
+                val p = bmp.getPixel(x, y)
+                sig[idx++] = (Color.red(p) * 3 + Color.green(p) * 6 + Color.blue(p)) / 10
+            }
+        }
+        return sig
+    }
+
+    private fun isSignatureSimilar(prev: IntArray?, curr: IntArray): Boolean {
+        if (prev == null || prev.size != curr.size) return false
+        var diffSum = 0
+        for (i in prev.indices) {
+            diffSum += abs(prev[i] - curr[i])
+        }
+        val avgDiff = diffSum.toFloat() / prev.size
+        return avgDiff < 3.5f
+    }
+
+    private suspend fun runMlKitOcr(bitmap: Bitmap): String = suspendCancellableCoroutine { cont ->
+        val input = InputImage.fromBitmap(bitmap, 0)
+        textRecognizer.process(input)
+            .addOnSuccessListener { result ->
+                if (cont.isActive) cont.resume(result.text)
+            }
+            .addOnFailureListener {
+                if (cont.isActive) cont.resume("")
+            }
+    }
+
+    private fun stopEverything() {
+        scanJob?.cancel()
+        translator.cancelActive()
+        voiceReader.stop()
+        hideScanBoxOverlay()
+        subtitleBarView?.let { runCatching { windowManager.removeView(it) } }
+        subtitleBarView = null
+        virtualDisplay?.release()
+        virtualDisplay = null
+        imageReader?.close()
+        imageReader = null
+        mediaProjection?.stop()
+        mediaProjection = null
+        stopForeground(STOP_FOREGROUND_REMOVE)
+        stopSelf()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        serviceScope.cancel()
+        voiceReader.release()
+        textRecognizer.close()
+    }
+
+    override fun onBind(intent: Intent?): IBinder? = null
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                "مترجم ألعاب PS5 الفوري",
+                NotificationManager.IMPORTANCE_LOW
+            )
+            val nm = getSystemService(NotificationManager::class.java)
+            nm.createNotificationChannel(channel)
+        }
+    }
+}
