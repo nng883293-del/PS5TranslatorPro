@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="PS5 Translator Pro"
+            android:textColor="@color/text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="18dp"
+            android:gravity="center"
+            android:text="مترجم فوري للألعاب بذكاء اصطناعي + لهجة عراقية + قارئ صوتي"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <!-- API Key Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="مفتاح Gemini API (مجاني من Google AI Studio)"
+                android:textColor="@color/accent_cyan"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etApiKey"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_pill_button"
+                android:hint="AIzaSy..."
+                android:inputType="textPassword"
+                android:paddingHorizontal="14dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="نموذج السرعة والدقة"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <RadioGroup
+                android:id="@+id/rgModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbFlashLite"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="2.5 Flash-Lite (أسرع ⚡)"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbFlash"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2.5 Flash (أدق 🧠)"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Dialect & Game Context Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="أسلوب الترجمة"
+                android:textColor="@color/accent_green"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgDialect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbOriginalMsa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="فصحى أصلية دقيقة"
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/rbIraqi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="لهجة عراقية 🇮🇶"
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="سياق اللعبة"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <Spinner
+                android:id="@+id/spGamePreset"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_pill_button"
+                android:paddingHorizontal="12dp" />
+        </LinearLayout>
+
+        <!-- Voice Reader & Scan Speed Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="قارئ النص الصوتي (يقرأ الترجمة فوراً)"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/swTtsEnabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTtsSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="سرعة القراءة الصوتية: 1.2x"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <SeekBar
+                android:id="@+id/sbTtsSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="4" />
+
+            <TextView
+                android:id="@+id/tvScanInterval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="سرعة فحص الشاشة: كل 200ms"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <SeekBar
+                android:id="@+id/sbScanInterval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="9"
+                android:progress="1" />
+        </LinearLayout>
+
+        <!-- Test Button -->
+        <Button
+            android:id="@+id/btnTest"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="#1E293B"
+            android:text="اختبار سرعة الترجمة والقارئ الصوتي 🔊"
+            android:textColor="@color/accent_cyan"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvTestResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_card_dark"
+            android:padding="12dp"
+            android:text="نتيجة الاختبار ستظهر هنا..."
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <!-- Primary Start / Stop Button -->
+        <Button
+            android:id="@+id/btnStartOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/accent_green"
+            android:text="تشغيل المترجم العائم فوق اللعبة ▶"
+            android:textColor="#090E1A"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnStopOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/danger_red"
+            android:text="إيقاف المترجم ■"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="نصيحة: شغّل البلي عبر Chiaki-ng أو PS Remote Play، ثم اضغط تحديد منطقة الترجمة واسحب المربع الأخضر على سطر الكلام واضغط تأكيد."
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+</ScrollView>
