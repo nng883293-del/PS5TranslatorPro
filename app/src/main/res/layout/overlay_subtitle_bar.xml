@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlayRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_subtitle_overlay"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/dragHandle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvStatusBadge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⚡ جاهز • اسحب لتحريك الشريط"
+            android:textColor="#94A3B8"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/btnToggleDialect"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_pill_button"
+            android:gravity="center"
+            android:paddingHorizontal="9dp"
+            android:text="فصحى"
+            android:textColor="#38BDF8"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnToggleTts"
+            android:layout_width="30dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_pill_button"
+            android:gravity="center"
+            android:text="🔊"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btnEditArea"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_pill_button"
+            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:text="تحديد"
+            android:textColor="#84CC16"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnPauseResume"
+            android:layout_width="30dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_pill_button"
+            android:gravity="center"
+            android:text="⏸"
+            android:textColor="#F59E0B"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btnCloseOverlay"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@drawable/bg_pill_button"
+            android:gravity="center"
+            android:text="✕"
+            android:textColor="#EF4444"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTranslatedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="اضغط «تحديد» وضع المربع الأخضر على سطر الترجمة"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
